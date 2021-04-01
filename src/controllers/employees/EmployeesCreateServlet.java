@@ -17,23 +17,14 @@ import models.validators.EmployeeValidator;
 import utils.DBUtil;
 import utils.EncryptUtil;
 
-/**
- * Servlet implementation class EmployeesCreateServlet
- */
 @WebServlet("/employees/create")
 public class EmployeesCreateServlet extends HttpServlet {
     private static final long serialVersionUID = 1L;
 
-    /**
-     * @see HttpServlet#HttpServlet()
-     */
     public EmployeesCreateServlet() {
         super();
     }
 
-    /**
-     * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
-     */
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         String _token = request.getParameter("_token");
         if(_token != null && _token.equals(request.getSession().getId())) {
