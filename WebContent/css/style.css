@@ -180,3 +180,24 @@ pre{
 h3{
 	font-size:larder;
 }
+
+table#meeting_list th {
+    font-weight: bold;
+    padding: 10px 2%;
+}
+
+table#meeting_list .meeting_name {
+    width: 20%;
+    padding: 10px 2%;
+}
+table#meeting_list .meeting_date {
+    width: 20%;
+}
+
+table#meeting_list .meeting_title {
+    width: 37%;
+}
+
+table#meeting_list .meeting_action {
+    width: 13%;
+}
