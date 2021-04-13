@@ -201,3 +201,23 @@ table#meeting_list .meeting_title {
 table#meeting_list .meeting_action {
     width: 13%;
 }
+table#report_list th {
+    font-weight: bold;
+    padding: 10px 2%;
+}
+
+table#company_list .company_name {
+    width: 20%;
+    padding: 10px 2%;
+}
+table#company_list .comapny_tell {
+    width: 20%;
+}
+
+table#company_list .company_address {
+    width: 37%;
+}
+
+table#company_list .comapny_action {
+    width: 13%;
+}

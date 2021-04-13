@@ -7,6 +7,8 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
 import javax.persistence.NamedQueries;
 import javax.persistence.NamedQuery;
 import javax.persistence.Table;
@@ -29,8 +31,18 @@ public class Company {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id;
 
+    @ManyToOne
+    @JoinColumn(name = "employee_id",nullable = false)
+    private Company company;
+
     @Column(name = "name", nullable = false)
     private String name;
+
+    @Column(name = "tell", nullable = false)
+    private String tell;
+
+    @Column(name = "address" , nullable = false)
+    private String address;
 
 
     @Column(name = "created_at", nullable = false)
@@ -59,7 +71,20 @@ public class Company {
         this.name = name;
     }
 
+    public String getTell() {
+        return tell;
+    }
 
+    public void setTell(String tell) {
+        this.name = tell;
+
+    }    public String getAddress() {
+        return address;
+    }
+
+    public void setAddress(String address) {
+        this.name = address;
+    }
     public Timestamp getCreated_at() {
         return created_at;
     }
