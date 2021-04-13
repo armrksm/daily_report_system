@@ -41,7 +41,7 @@
                 </c:choose>
             </c:forEach>
         </div>
-        <p><a href="<c:url value='/meetings/new' />">新規日報の登録</a></p>
+        <p><a href="<c:url value='/meetings/new' />">新規商談の登録</a></p>
 
     </c:param>
 </c:import>
