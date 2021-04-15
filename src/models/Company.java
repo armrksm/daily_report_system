@@ -33,7 +33,7 @@ public class Company {
 
     @ManyToOne
     @JoinColumn(name = "employee_id",nullable = false)
-    private Company company;
+    private Employee employee;
 
     @Column(name = "name", nullable = false)
     private String name;
@@ -54,6 +54,7 @@ public class Company {
     @Column(name = "delete_flag", nullable = false)
     private Integer delete_flag;
 
+
     public Integer getId() {
         return id;
     }
@@ -62,6 +63,13 @@ public class Company {
         this.id = id;
     }
 
+    public Employee getEmployee() {
+        return employee;
+    }
+
+    public void setEmployee(Employee employee) {
+        this.employee = employee;
+    }
 
     public String getName() {
         return name;

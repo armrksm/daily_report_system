@@ -23,12 +23,11 @@ public class CompanyValidator {
         if(!address_error.equals("")) {
             errors.add(address_error);
         }
-
         return errors;
     }
 
     private static String _validateName(String name) {
-        if(name == null || name.equals("")) {
+        if( name== null || name.equals("")) {
             return "会社名を入力してください。";
             }
 
@@ -42,7 +41,6 @@ public class CompanyValidator {
 
         return "";
     }
-
     private static String _validateAddress(String address) {
         if(address == null || address.equals("")) {
             return "住所を入力してください。";

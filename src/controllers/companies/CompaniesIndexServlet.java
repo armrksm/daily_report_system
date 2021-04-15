@@ -15,10 +15,10 @@ import models.Company;
 import utils.DBUtil;
 
 @WebServlet("/companies/index")
-public class CompanyIndexServlet extends HttpServlet {
+public class CompaniesIndexServlet extends HttpServlet {
     private static final long serialVersionUID = 1L;
 
-    public CompanyIndexServlet() {
+    public CompaniesIndexServlet() {
         super();
     }
 
