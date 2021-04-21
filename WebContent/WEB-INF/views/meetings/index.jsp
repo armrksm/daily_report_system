@@ -12,15 +12,15 @@
         <table id="meeting_list">
             <tbody>
                 <tr>
-                    <th class="meeting_name">氏名</th>
-                    <th class="meeting_date">日付</th>
-                    <th class="meeting_title">タイトル</th>
+                    <th class="meeting_name">営業担当</th>
+                    <th class="meeting_date">商談日</th>
+                    <th class="meeting_title">進捗状況</th>
                     <th class="meeting_action">操作</th>
                 </tr>
                 <c:forEach var="meeting" items="${meeting}" varStatus="status">
                     <tr class="row${status.count % 2}">
                         <td class="meeting_name"><c:out value="${meeting.emplyee.name}" /></td>
-                        <td class="meeting_date"><fmt:formatDate value='${meeting.report_date}' pattern='yyyy-MM-dd' /></td>
+                        <td class="meeting_date"><fmt:formatDate value='${meeting.meeting_date}' pattern='yyyy-MM-dd' /></td>
                         <td class="meeting_title">${meeting.title}</td>
                         <td class="meeting_action"><a href="<c:url value='/meetings/show?id=${meeting.id}' />">詳細を見る</a></td>
                     </tr>

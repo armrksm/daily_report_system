@@ -14,6 +14,11 @@ public class CompanyValidator {
             errors.add(name_error);
         }
 
+        String client_error = _validateClient(c.getClient());
+        if(!client_error.equals("")){
+        	errors.add(client_error);
+        }
+
         String tell_error = _validateTell(c.getTell());
         if(!tell_error.equals("")) {
             errors.add(tell_error);
@@ -32,6 +37,15 @@ public class CompanyValidator {
             }
 
         return "";
+    }
+
+    private static String _validateClient(String client){
+    	if( client==null || client.equals("")){
+    		return "担当者名を入力してください。";
+    	}
+
+    	return"";
+
     }
 
     private static String _validateTell(String tell) {

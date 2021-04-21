@@ -15,7 +15,7 @@ import javax.persistence.NamedQueries;
 import javax.persistence.NamedQuery;
 import javax.persistence.Table;
 
-@Table(name = "meeting")
+@Table(name = "meetings")
 @NamedQueries({
     @NamedQuery(
         name = "getAllMeetings",
@@ -36,6 +36,10 @@ public class Meeting {
     @ManyToOne
     @JoinColumn(name = "employee_id", nullable = false)
     private Employee employee;
+
+    @ManyToOne
+    @JoinColumn(name = "company_id", nullable = false)
+    private Company company;
 
     @Column(name = "meeting_date", nullable = false)
     private Date meeting_date;
@@ -68,10 +72,19 @@ public class Meeting {
     public void setEmployee(Employee employee) {
         this.employee = employee;
     }
+    public Company getCompany() {
+        return company;
+    }
+
+    public void setCompany(Company  company) {
+        this.company = company;
+    }
 
     public Date getMeeting_date() {
         return meeting_date;
     }
+
+
 
     public void setMeeting_date(Date meeting_date) {
         this.meeting_date = meeting_date;

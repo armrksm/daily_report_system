@@ -32,7 +32,7 @@
                 ${param.content}
             </div>
             <div id="footer">
-                by aaaaa
+                by ○〇○〇
             </div>
         </div>
     </body>

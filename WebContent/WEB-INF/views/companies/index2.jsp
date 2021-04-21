@@ -20,11 +20,12 @@
                 </tr>
                 <c:forEach var="company" items="${companies}" varStatus="status">
                     <tr class="row${status.count % 2}">
-                        <td class="company_name"><c:out value="${company.name}" /></td>
+                        <td class="company_name"><c:out value="${company.employee.name}" /></td>
+                        <td class="company_name">${comany.name}</td>
                         <td class="company_client">${company.client}</td>
                         <td class="company_tell">${company.tell}</td>
                         <td class="company_address">${company.address}</td>
-                        <td class="company_action"><a href="<c:url value='/companies/show?id=${company.id}' />">詳細を見る</a></td>
+                        <td class="report_action"><a href="<c:url value='/companis/show?id=${companies.id}' />">詳細を見る</a></td>
                     </tr>
                 </c:forEach>
             </tbody>

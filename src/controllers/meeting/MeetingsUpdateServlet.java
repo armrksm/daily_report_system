@@ -13,16 +13,15 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import models.Employee;
 import models.Meeting;
 import models.validators.MeetingValidator;
 import utils.DBUtil;
 
-@WebServlet("/meetings/create")
-public class MeetingsCreateServlet extends HttpServlet {
+@WebServlet("/meetings/update")
+public class MeetingsUpdateServlet extends HttpServlet {
     private static final long serialVersionUID = 1L;
 
-    public MeetingsCreateServlet() {
+    public MeetingsUpdateServlet() {
         super();
     }
 
@@ -31,42 +30,30 @@ public class MeetingsCreateServlet extends HttpServlet {
         if(_token != null && _token.equals(request.getSession().getId())) {
             EntityManager em = DBUtil.createEntityManager();
 
-            Meeting m = new Meeting();
+            Meeting m = em.find(Meeting.class, (Integer)(request.getSession().getAttribute("meeting_id")));
 
-            m.setEmployee((Employee)request.getSession().getAttribute("login_employee"));
-
-            Date meeting_date = new Date(System.currentTimeMillis());
-            String rd_str = request.getParameter("meeting_date");
-            if(rd_str != null && !rd_str.equals("")) {
-                meeting_date = Date.valueOf(request.getParameter("meeting_date"));
-            }
-
-            m.setMeeting_date(meeting_date);
-
+            m.setMeeting_date(Date.valueOf(request.getParameter("meeting_date")));
             m.setTitle(request.getParameter("title"));
             m.setContent(request.getParameter("content"));
-
-            Timestamp currentTime = new Timestamp(System.currentTimeMillis());
-            m.setCreated_at(currentTime);
-            m.setUpdated_at(currentTime);
+            m.setUpdated_at(new Timestamp(System.currentTimeMillis()));
 
             List<String> errors = MeetingValidator.validate(m);
             if(errors.size() > 0) {
                 em.close();
 
                 request.setAttribute("_token", request.getSession().getId());
-                request.setAttribute("meeting", m);
+                request.setAttribute("report", m);
                 request.setAttribute("errors", errors);
 
-                RequestDispatcher rd = request.getRequestDispatcher("/WEB-INF/views/meetings/new.jsp");
+                RequestDispatcher rd = request.getRequestDispatcher("/WEB-INF/views/meetings/edit.jsp");
                 rd.forward(request, response);
-
             } else {
                 em.getTransaction().begin();
-                em.persist(m);
                 em.getTransaction().commit();
                 em.close();
-                request.getSession().setAttribute("flush", "登録が完了しました。");
+                request.getSession().setAttribute("flush", "更新が完了しました。");
+
+                request.getSession().removeAttribute("meeting_id");
 
                 response.sendRedirect(request.getContextPath() + "/meetings/index");
             }

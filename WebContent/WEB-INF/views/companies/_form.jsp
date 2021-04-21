@@ -19,6 +19,10 @@
 <c:out value="${sessionScope.login_employee.name}" />
 <br /><br />
 
+<label for="client">担当者名</label><br />
+<input type="text" name="client" value="${company.client}" />
+<br /><br />
+
 
 <label for="tell">電話番号</label><br />
 <input type="text" name="tell" value="${company.tell}" />

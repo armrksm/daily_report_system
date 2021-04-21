@@ -1,5 +1,6 @@
 package models;
 
+
 import java.sql.Timestamp;
 
 import javax.persistence.Column;
@@ -18,102 +19,120 @@ import javax.persistence.Table;
     @NamedQuery(
         name = "getAllCompanies",
         query = "SELECT c FROM Company AS c ORDER BY c.id DESC"
-    ),
+        ),
     @NamedQuery(
-        name = "getCompaniesCount",
-        query = "SELECT COUNT(c) FROM Company AS c"
-    )
+            name = "getCompaniesCount",
+            query ="SELECT COUNT(c) FROM Company AS c"
+            )
 })
+
 @Entity
-public class Company {
-    @Id
-    @Column(name = "id")
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Integer id;
-
-    @ManyToOne
-    @JoinColumn(name = "employee_id",nullable = false)
-    private Employee employee;
-
-    @Column(name = "name", nullable = false)
-    private String name;
-
-    @Column(name = "tell", nullable = false)
-    private String tell;
-
-    @Column(name = "address" , nullable = false)
-    private String address;
+public class Company{
+	@Id
+	@Column(name = "id")
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
+	private Integer id;
 
 
-    @Column(name = "created_at", nullable = false)
-    private Timestamp created_at;
+	@Column(name = "name",nullable = false , unique = true)
+	private String name;
 
-    @Column(name = "updated_at", nullable = false)
-    private Timestamp updated_at;
+	@ManyToOne
+	@JoinColumn(name = "employee_id", nullable = false)
+	private Employee employee;
 
-    @Column(name = "delete_flag", nullable = false)
-    private Integer delete_flag;
+	@Column(name = "client" , nullable = false ,unique = true)
+	private String client;
+
+	@Column(name = "tell" , nullable = false ,unique = true)
+	private String tell;
+
+	@Column(name = "address",nullable = false,unique = true)
+	private String address;
+
+	@Column(name = "created_at", nullable = false)
+	private Timestamp created_at;
+
+	@Column(name = "updated_at" ,nullable = false)
+	private Timestamp updated_at;
+
+	@Column(name = "delete_flag", nullable = false)
+	private Integer delete_flag;
+
+	public Integer getId() {
+		return id;
+	}
+
+	public void setId(Integer id) {
+		this.id = id;
+	}
+
+	public String getName() {
+		return name;
+	}
+
+	public void setName(String name) {
+		this.name = name;
+	}
+
+	public Employee getEmployee() {
+		return employee;
+	}
+
+	public void setEmployee(Employee employee) {
+		this.employee = employee;
+	}
+
+	public String getClient() {
+		return client;
+	}
+
+	public void setClient(String client) {
+		this.client = client;
+	}
+
+	public String getTell() {
+		return tell;
+	}
+
+	public void setTell(String tell) {
+		this.tell = tell;
+	}
+
+	public String getAddress() {
+		return address;
+	}
+
+	public void setAddress(String address) {
+		this.address = address;
+	}
+
+	public Timestamp getCreated_at() {
+		return created_at;
+	}
+
+	public void setCreated_at(Timestamp created_at) {
+		this.created_at = created_at;
+	}
+
+	public Timestamp getUpdated_at() {
+		return updated_at;
+	}
+
+	public void setUpdated_at(Timestamp updated_at) {
+		this.updated_at = updated_at;
+	}
+
+	public Integer getDelete_flag() {
+		return delete_flag;
+	}
+
+	public void setDelete_flag(Integer delete_flag) {
+		this.delete_flag = delete_flag;
+	}
 
 
-    public Integer getId() {
-        return id;
-    }
 
-    public void setId(Integer id) {
-        this.id = id;
-    }
 
-    public Employee getEmployee() {
-        return employee;
-    }
 
-    public void setEmployee(Employee employee) {
-        this.employee = employee;
-    }
-
-    public String getName() {
-        return name;
-    }
-
-    public void setName(String name) {
-        this.name = name;
-    }
-
-    public String getTell() {
-        return tell;
-    }
-
-    public void setTell(String tell) {
-        this.name = tell;
-
-    }    public String getAddress() {
-        return address;
-    }
-
-    public void setAddress(String address) {
-        this.name = address;
-    }
-    public Timestamp getCreated_at() {
-        return created_at;
-    }
-
-    public void setCreated_at(Timestamp created_at) {
-        this.created_at = created_at;
-    }
-
-    public Timestamp getUpdated_at() {
-        return updated_at;
-    }
-
-    public void setUpdated_at(Timestamp updated_at) {
-        this.updated_at = updated_at;
-    }
-
-    public Integer getDelete_flag() {
-        return delete_flag;
-    }
-
-    public void setDelete_flag(Integer delete_flag) {
-        this.delete_flag = delete_flag;
-    }
 }

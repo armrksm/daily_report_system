@@ -37,10 +37,10 @@ public class CompaniesCreateServlet extends HttpServlet {
             c.setEmployee((Employee)request.getSession().getAttribute("login_employee"));
 
             c.setName(request.getParameter("name"));
+
+            c.setClient(request.getParameter("client"));
             c.setTell(request.getParameter("tell"));
             c.setAddress(request.getParameter("address"));
-
-
 
 
             Timestamp currentTime = new Timestamp(System.currentTimeMillis());
@@ -64,8 +64,8 @@ public class CompaniesCreateServlet extends HttpServlet {
                 em.persist(c);
                 em.getTransaction().commit();
 
-                request.getSession().setAttribute("flush", "登録が完了しました。");
                 em.close();
+                request.getSession().setAttribute("flush", "登録が完了しました。");
 
                 response.sendRedirect(request.getContextPath() + "/companies/index");
             }
