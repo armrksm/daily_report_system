@@ -4,7 +4,7 @@
 <c:import url="/WEB-INF/views/layout/app.jsp">
     <c:param name="content">
         <c:choose>
-            <c:when test="${employee != null}">
+            <c:when test="${company != null}">
                 <h2>id : ${company.id} の会社の詳細ページ</h2>
 
                 <table>
@@ -15,6 +15,20 @@
                             <td><c:out value="${company.name}" /></td>
                         </tr>
                         <tr>
+                        	<th>担当者名</th>
+                         	<td><c:out value="${company.client}"></c:out></td>
+                        </tr>
+                        <tr>
+                        	<th>営業担当</th>
+                        	<td><c:out value="${company.employee.name}"></c:out></td>
+                        </tr>
+                        <tr>
+                        	<th>電話番号</th>
+                        	<td><c:out value="${company.tell}"></c:out></td>
+                        </tr>
+                        <tr>
+                        	<th>住所</th>
+                        	<td><c:out value="${company.address}"></c:out></td>
                         </tr>
                         <tr>
                             <th>登録日時</th>
