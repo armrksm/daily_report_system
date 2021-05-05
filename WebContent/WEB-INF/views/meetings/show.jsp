@@ -10,6 +10,14 @@
                 <table>
                     <tbody>
                         <tr>
+                        	<th>取引先</th>
+                        	<td><c:out value="${meeting.company.name}"></c:out></td>
+                        </tr>
+                        <tr>
+                        	<th>担当者名</th>
+                        	<td><c:out value="${meeting.company.client}"></c:out></td>
+                        </tr>
+                        <tr>
                             <th>営業担当</th>
                             <td><c:out value="${meeting.employee.name}" /></td>
                         </tr>

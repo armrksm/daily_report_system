@@ -57,68 +57,68 @@ public class Meeting {
     @Column(name = "updated_at", nullable = false)
     private Timestamp updated_at;
 
-    public Integer getId() {
-        return id;
-    }
+	public Integer getId() {
+		return id;
+	}
 
-    public void setId(Integer id) {
-        this.id = id;
-    }
+	public void setId(Integer id) {
+		this.id = id;
+	}
 
-    public Employee getEmployee() {
-        return employee;
-    }
+	public Employee getEmployee() {
+		return employee;
+	}
 
-    public void setEmployee(Employee employee) {
-        this.employee = employee;
-    }
-    public Company getCompany() {
-        return company;
-    }
+	public void setEmployee(Employee employee) {
+		this.employee = employee;
+	}
 
-    public void setCompany(Company  company) {
-        this.company = company;
-    }
+	public Company getCompany() {
+		return company;
+	}
 
-    public Date getMeeting_date() {
-        return meeting_date;
-    }
+	public void setCompany(Company company) {
+		this.company = company;
+	}
 
+	public Date getMeeting_date() {
+		return meeting_date;
+	}
 
+	public void setMeeting_date(Date meeting_date) {
+		this.meeting_date = meeting_date;
+	}
 
-    public void setMeeting_date(Date meeting_date) {
-        this.meeting_date = meeting_date;
-    }
+	public String getTitle() {
+		return title;
+	}
 
-    public String getTitle() {
-        return title;
-    }
+	public void setTitle(String title) {
+		this.title = title;
+	}
 
-    public void setTitle(String title) {
-        this.title = title;
-    }
+	public String getContent() {
+		return content;
+	}
 
-    public String getContent() {
-        return content;
-    }
+	public void setContent(String content) {
+		this.content = content;
+	}
 
-    public void setContent(String content) {
-        this.content = content;
-    }
+	public Timestamp getCreated_at() {
+		return created_at;
+	}
 
-    public Timestamp getCreated_at() {
-        return created_at;
-    }
+	public void setCreated_at(Timestamp created_at) {
+		this.created_at = created_at;
+	}
 
-    public void setCreated_at(Timestamp created_at) {
-        this.created_at = created_at;
-    }
+	public Timestamp getUpdated_at() {
+		return updated_at;
+	}
 
-    public Timestamp getUpdated_at() {
-        return updated_at;
-    }
+	public void setUpdated_at(Timestamp updated_at) {
+		this.updated_at = updated_at;
+	}
 
-    public void setUpdated_at(Timestamp updated_at) {
-        this.updated_at = updated_at;
-    }
 }

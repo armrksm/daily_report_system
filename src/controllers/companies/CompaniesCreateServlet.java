@@ -48,7 +48,7 @@ public class CompaniesCreateServlet extends HttpServlet {
             c.setUpdated_at(currentTime);
             c.setDelete_flag(0);
 
-            List<String> errors = CompanyValidator.validate(c);
+            List<String> errors = CompanyValidator.validate(c,true);
             if(errors.size() > 0) {
                 em.close();
 

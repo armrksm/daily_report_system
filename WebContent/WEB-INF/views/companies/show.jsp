@@ -45,13 +45,13 @@
                     </tbody>
                 </table>
 
-                <p><a href="<c:url value='/companies/edit?id=${comany.id}' />">この従業員情報を編集する</a></p>
+                <p><a href="<c:url value='/companies/edit?id=${company.id}' />">この会社情報を編集する</a></p>
             </c:when>
             <c:otherwise>
                 <h2>お探しのデータは見つかりませんでした。</h2>
             </c:otherwise>
         </c:choose>
-
+		<p><a href="<c:url value='/meetings/new'/>">新規商談登録</a></p>
         <p><a href="<c:url value='/companies/index' />">一覧に戻る</a></p>
     </c:param>
 </c:import>

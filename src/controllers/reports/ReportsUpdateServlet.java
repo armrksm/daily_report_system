@@ -23,7 +23,6 @@ public class ReportsUpdateServlet extends HttpServlet {
 
     public ReportsUpdateServlet() {
         super();
-        // TODO Auto-generated constructor stub
     }
 
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {

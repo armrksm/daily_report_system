@@ -24,7 +24,16 @@
                         <td class="company_client">${company.client}</td>
                         <td class="company_tell">${company.tell}</td>
                         <td class="company_address">${company.address}</td>
-                        <td class="company_action"><a href="<c:url value='/companies/show?id=${company.id}' />">詳細を見る</a></td>
+                    	<td>
+                    	<c:choose>
+                                <c:when test="${company.delete_flag == 1}">
+                                    （削除済み）
+                                </c:when>
+                                <c:otherwise>
+                                    <a href="<c:url value='/companies/show?id=${company.id}' />">詳細を表示</a>
+                                </c:otherwise>
+                            </c:choose>
+
                     </tr>
                 </c:forEach>
             </tbody>

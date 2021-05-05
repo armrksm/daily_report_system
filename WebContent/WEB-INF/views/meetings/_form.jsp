@@ -10,16 +10,24 @@
 
     </div>
 </c:if>
-<label for="meeting_date">日付</label><br />
+<label for="meeting_date">商談日</label><br />
 <input type="date" name="meeting_date" value="<fmt:formatDate value='${meeting.meeting_date}' pattern='yyyy-MM-dd' />" />
 <br /><br />
+
+<label for="name">取引先</label><br />
+<c:out value="${sessionScope.select_company.name}"></c:out>
+<br /><br/>
+
+<label for="client">担当者名</label><br />
+<c:out value="${sessionScope.select_company.client}"></c:out>
+<br /><br />
+
 
 <label for="name">営業担当</label><br />
 <c:out value="${sessionScope.login_employee.name}" />
 <br /><br />
 
-
-<label for="title">進捗状況</label><br />
+<label for="title">タイトル</label><br />
 <input type="text" name="title" value="${meeting.title}" />
 <br /><br />
 

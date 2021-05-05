@@ -11,6 +11,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import models.Company;
+import models.Employee;
 import utils.DBUtil;
 
 @WebServlet("/companies/edit")
@@ -28,12 +29,15 @@ public class CompaniesEditServlet extends HttpServlet {
 
         em.close();
 
+        Employee login_employee = (Employee)request.getSession().getAttribute("login_employee");
+        if(c !=null && login_employee.getId() == c.getEmployee().getId()){
+
         request.setAttribute("company", c);
         request.setAttribute("_token", request.getSession().getId());
         request.getSession().setAttribute("company_id", c.getId());
-
+        }
         RequestDispatcher rd = request.getRequestDispatcher("/WEB-INF/views/companies/edit.jsp");
         rd.forward(request, response);
-    }
+}
 
 }

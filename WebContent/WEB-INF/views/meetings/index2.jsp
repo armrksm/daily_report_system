@@ -18,14 +18,14 @@
                     <th class="meeting_action">操作</th>
                 </tr>
 
-				<c:forEach var="meeting" items="${meetings}" varStatus="status">
-					<tr class="row${status.count %2}">
-						<td class="meeting_name"><c:out value="${meeting.employee.name}"/></td>
-						<td class="meeting_date"><fmt:formatDate value='${meeting.meeting_date}' pattern='yyyy-MM-dd' /></td>
-						<td class="meeting_title">${meeting.title}</td>
-						<td class="meeting_action"><a href="<c:url value='/meetings/show?id=${meeting.id}' />">詳細を見る</a></td>
+                <c:forEach var="meeting" items="${meeting}" varStatus="status">
+                    <tr class="row${status.count % 2}">
+                        <td class="meeting_name"><c:out value="${meeting.emplyee.name}" /></td>
+                        <td class="meeting_date"><fmt:formatDate value='${meeting.meeting_date}' pattern='yyyy-MM-dd' /></td>
+                        <td class="meeting_title">${meeting.title}</td>
+                        <td class="meeting_action"><a href="<c:url value='/meetings/show?id=${meeting.id}' />">詳細を見る</a></td>
                     </tr>
-				</c:forEach>
+                </c:forEach>
             </tbody>
         </table>
 

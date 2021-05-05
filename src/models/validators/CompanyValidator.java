@@ -3,10 +3,13 @@ package models.validators;
 import java.util.ArrayList;
 import java.util.List;
 
-import models.Company;;
+import javax.persistence.EntityManager;
+
+import models.Company;
+import utils.DBUtil;;
 
 public class CompanyValidator {
-    public static List<String> validate(Company c) {
+    public static List<String> validate(Company c,Boolean companiesDuplicateCheckFlag) {
         List<String> errors = new ArrayList<String>();
 
         String name_error = _validateName(c.getName());
@@ -26,7 +29,12 @@ public class CompanyValidator {
 
         String address_error = _validateAddress(c.getAddress());
         if(!address_error.equals("")) {
-            errors.add(address_error);
+        	errors.add(address_error);
+
+        }
+            String companies_error = _validateCompanies(c, companiesDuplicateCheckFlag);
+            if(!companies_error.equals("")) {
+            	errors.add(companies_error);
         }
         return errors;
     }
@@ -62,4 +70,21 @@ public class CompanyValidator {
 
         return "";
     }
+    private static String _validateCompanies(Company c,Boolean companiesDuplicateCheckFlag) {
+    if(companiesDuplicateCheckFlag) {
+        EntityManager em = DBUtil.createEntityManager();
+        long companies_count = (long)em.createNamedQuery("checkRegisteredCompanies", Long.class)
+        		.setParameter("name", c.getName())
+        		.setParameter("client",c.getClient())
+        		.setParameter("tell",c.getTell())
+        		.setParameter("address",c.getAddress())
+        		.getSingleResult();
+        em.close();
+        if(companies_count > 0) {
+            return "入力された会社は既に存在しています。";
+        }
+    }
+
+    return "";
+}
 }

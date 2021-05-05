@@ -30,6 +30,8 @@ public class CompaniesShowServlet extends HttpServlet {
 
         request.setAttribute("company", c);
         request.setAttribute("_token", request.getSession().getId());
+        request.getSession().setAttribute("company_id", c.getId());
+        request.getSession().setAttribute("select_company",c);
 
         RequestDispatcher rd = request.getRequestDispatcher("/WEB-INF/views/companies/show.jsp");
         rd.forward(request, response);

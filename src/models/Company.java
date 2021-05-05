@@ -23,7 +23,12 @@ import javax.persistence.Table;
     @NamedQuery(
             name = "getCompaniesCount",
             query ="SELECT COUNT(c) FROM Company AS c"
-            )
+            ),
+    @NamedQuery(
+            name = "checkRegisteredCompanies",
+            query = "SELECT COUNT(c) FROM Company AS c WHERE c.name = :name  AND c.client = :client AND c.tell = :tell AND c.address = :address"
+        ),
+
 })
 
 @Entity
@@ -34,14 +39,14 @@ public class Company{
 	private Integer id;
 
 
-	@Column(name = "name",nullable = false , unique = true)
+	@Column(name = "name",nullable = false )
 	private String name;
 
 	@ManyToOne
 	@JoinColumn(name = "employee_id", nullable = false)
 	private Employee employee;
 
-	@Column(name = "client" , nullable = false ,unique = true)
+	@Column(name = "client" , nullable = false )
 	private String client;
 
 	@Column(name = "tell" , nullable = false ,unique = true)

@@ -10,7 +10,8 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import models.Meeting;;
+import models.Meeting;
+
 
 @WebServlet("/meetings/new")
 public class MeetingsNewServlet extends HttpServlet {

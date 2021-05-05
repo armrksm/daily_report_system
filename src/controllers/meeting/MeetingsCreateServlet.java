@@ -13,6 +13,7 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import models.Company;
 import models.Employee;
 import models.Meeting;
 import models.validators.MeetingValidator;
@@ -34,6 +35,7 @@ public class MeetingsCreateServlet extends HttpServlet {
             Meeting m = new Meeting();
 
             m.setEmployee((Employee)request.getSession().getAttribute("login_employee"));
+            m.setCompany((Company)request.getSession().getAttribute("select_company"));
 
             Date meeting_date = new Date(System.currentTimeMillis());
             String rd_str = request.getParameter("meeting_date");
