@@ -45,7 +45,11 @@
                     </tbody>
                 </table>
 
+
+				<c:if test="${sessionScope.login_employee.id ==company.employee.id}">
                 <p><a href="<c:url value='/companies/edit?id=${company.id}' />">この会社情報を編集する</a></p>
+                </c:if>
+
             </c:when>
             <c:otherwise>
                 <h2>お探しのデータは見つかりませんでした。</h2>
